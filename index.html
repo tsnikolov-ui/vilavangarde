@@ -252,8 +252,8 @@ footer{background:#120F0A;border-top:1px solid var(--line);padding:56px 0 30px}
 .foot-bottom a{color:var(--brass);font-size:12.5px}
 
 /* ---------- REVEAL ---------- */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
+html.jsa .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s ease}
+html.jsa .reveal.in{opacity:1;transform:translateY(0)}
 
 /* ---------- MOBILE STICKY CTA ---------- */
 .mcta{
@@ -427,6 +427,34 @@ footer{background:#120F0A;border-top:1px solid var(--line);padding:56px 0 30px}
 .price-note svg{width:22px;height:22px;flex:none;color:var(--brass)}
 .price-info div{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--cream-dim);background:#211A12;border:1px solid var(--line);padding:11px 18px;border-radius:10px}
 .price-info svg{width:17px;height:17px;color:var(--brass);flex:none}
+.call-panel{margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;background:linear-gradient(135deg,#2C2418,#211A12);border:1.5px solid var(--brass);border-radius:18px;padding:30px 36px;box-shadow:0 20px 44px rgba(0,0,0,.4)}
+.call-panel-txt{display:flex;align-items:center;gap:16px;flex:1;min-width:260px}
+.call-panel-txt svg{width:34px;height:34px;color:var(--brass);flex:none}
+.call-panel-txt p{font-family:'Prata',serif;font-size:21px;line-height:1.4;color:#F4EFE5}
+.call-panel .btn{white-space:nowrap;font-size:17px;padding:16px 30px;gap:10px}
+.call-panel .btn svg{width:19px;height:19px}
+.bank-panel{margin-top:22px;background:#211A12;border:1px solid var(--line);border-radius:16px;padding:26px 30px}
+.bank-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.bank-head>svg{width:30px;height:30px;color:var(--brass);flex:none}
+.bank-title{font-family:'Prata',serif;font-size:19px;color:#F4EFE5}
+.bank-copy-all{margin-left:auto;background:transparent;border:1px solid var(--brass);color:var(--brass-2);font-family:'Manrope',sans-serif;font-weight:600;font-size:13px;padding:9px 18px;border-radius:30px;cursor:pointer;transition:all .3s;white-space:nowrap}
+.bank-copy-all:hover,.bank-copy-all.copied{background:var(--brass);color:#17130E}
+.bank-rows{display:flex;flex-direction:column;gap:10px}
+.bank-row{display:flex;align-items:center;gap:14px;padding:12px 16px;background:#17130E;border:1px solid var(--line);border-radius:10px}
+.bank-row .bl{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--cream-dim);width:96px;flex:none}
+.bank-row .bv{font-size:15.5px;color:#F4EFE5;font-weight:600;word-break:break-all;flex:1}
+.bank-row .bcopy{background:transparent;border:1px solid var(--line);color:var(--cream-dim);font-size:12px;padding:6px 13px;border-radius:7px;cursor:pointer;transition:all .3s;white-space:nowrap;flex:none}
+.bank-row .bcopy:hover,.bank-row .bcopy.copied{border-color:var(--brass);color:var(--brass-2)}
+@media(max-width:560px){
+  .call-panel{padding:24px;flex-direction:column;align-items:flex-start}
+  .call-panel .btn{width:100%;justify-content:center}
+  .call-panel-txt p{font-size:18px}
+  .bank-panel{padding:22px 18px}
+  .bank-head{flex-wrap:wrap}
+  .bank-copy-all{margin-left:0;width:100%;margin-top:4px}
+  .bank-row{flex-wrap:wrap;gap:6px 12px}
+  .bank-row .bl{width:100%}
+}
 @media(max-width:860px){.price-grid{grid-template-columns:1fr}}
 
 /* RULES */
@@ -517,6 +545,7 @@ footer{background:#120F0A;border-top:1px solid var(--line);padding:56px 0 30px}
 </script>
 </head>
 <body>
+<script>document.documentElement.className+=' jsa';</script>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
@@ -550,7 +579,7 @@ footer{background:#120F0A;border-top:1px solid var(--line);padding:56px 0 30px}
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         Резервирай сега
       </a>
-      <a class="btn btn-ghost" href="#rooms">Виж настаняването</a>
+      <a class="btn btn-ghost" href="#floors">Виж настаняването</a>
     </div>
   </div>
   <div class="hero-scroll">Разгледай<div class="dot"></div></div>
@@ -805,27 +834,33 @@ footer{background:#120F0A;border-top:1px solid var(--line);padding:56px 0 30px}
       <div class="price-card reveal">
         <h3>Стая</h3>
         <div class="pc-sub">Спалня за двама със собствена баня</div>
-        <div class="pc-amt">40<small>€</small></div>
-        <div class="pc-per">на вечер</div>
-        <a class="btn btn-primary" href="tel:+359897869510">Резервирай</a>
       </div>
       <div class="price-card feat reveal">
         <span class="pc-tag">Най-избирано</span>
         <h3>Цял етаж</h3>
         <div class="pc-sub">Две стаи с трапезария и отделен вход</div>
-        <div class="pc-amt">80<small>€</small></div>
-        <div class="pc-per">на вечер</div>
-        <a class="btn btn-primary" href="tel:+359897869510">Резервирай</a>
       </div>
       <div class="price-card reveal">
         <h3>Цялата къща</h3>
         <div class="pc-sub">Цялата вила за компании и големи семейства</div>
-        <div class="pc-amt">200<small>€</small></div>
-        <div class="pc-per">на вечер</div>
-        <a class="btn btn-primary" href="tel:+359897869510">Резервирай</a>
       </div>
     </div>
-    <div class="price-note reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2l2.4 5.4 5.9.5-4.5 3.9 1.4 5.8L12 20l-5.1 3.1 1.4-5.8L3.7 8l5.9-.5z"/></svg>За празничните дни (Коледа, Нова година и официални празници) цените се различават от посочените. Свържете се с нас за актуална оферта.</div>
+
+    <div class="call-panel reveal">
+      <div class="call-panel-txt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 11.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg><p>Обадете ни се, за да уточним Вашите избрани дати и цените за Вашия престой</p></div>
+      <a class="btn btn-primary" href="tel:+359897869510"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 11.5a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>089 786 9510</a>
+    </div>
+
+    <div class="bank-panel reveal">
+      <div class="bank-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18M4 10h16M5 10V7l7-4 7 4v3M6 21v-7M10 21v-7M14 21v-7M18 21v-7"/></svg><div><div class="bank-title">Данни за капаро</div></div><button type="button" class="bank-copy-all" data-copy="ФЕМИЛИ ДИЗАЙН ЕООД&#10;Банка ДСК АД&#10;IBAN: BG31STSA93001526171342&#10;BIC: STSABGSF">Копирай всички</button></div>
+      <div class="bank-rows">
+        <div class="bank-row"><span class="bl">Получател</span><span class="bv">ФЕМИЛИ ДИЗАЙН ЕООД</span></div>
+        <div class="bank-row"><span class="bl">Банка</span><span class="bv">Банка ДСК АД</span></div>
+        <div class="bank-row"><span class="bl">IBAN</span><span class="bv">BG31STSA93001526171342</span><button type="button" class="bcopy" data-copy="BG31STSA93001526171342">копирай</button></div>
+        <div class="bank-row"><span class="bl">BIC</span><span class="bv">STSABGSF</span><button type="button" class="bcopy" data-copy="STSABGSF">копирай</button></div>
+      </div>
+    </div>
+
     <div class="price-info reveal">
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V7l9-4 9 4v14"/></svg>Цяла вила за компании до 10–12 души — по запитване</div>
       <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Капаро 50% от общата стойност</div>
@@ -890,10 +925,10 @@ footer{background:#120F0A;border-top:1px solid var(--line);padding:56px 0 30px}
       <a class="near-card" href="https://maps.app.goo.gl/5JUx2Y7SDHh8fLLz5" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Водопад Късак<svg class="nc-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
     </div>
     <div class="near-group" data-c="zavedenia">
-      <span class="near-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Ресторант Мерджан</span>
-      <span class="near-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Ресторант Жабока</span>
-      <span class="near-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Магазин Мини Маркет Романтика</span>
-      <span class="near-card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Сладкарница Royal Sweet House</span>
+      <a class="near-card" href="https://www.google.com/maps/search/?api=1&query=%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82%20%D0%9C%D0%B5%D1%80%D0%B4%D0%B6%D0%B0%D0%BD%20%D0%A1%D1%8A%D1%80%D0%BD%D0%B8%D1%86%D0%B0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Ресторант Мерджан<svg class="nc-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a class="near-card" href="https://www.google.com/maps/search/?api=1&query=%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD%D1%82%20%D0%96%D0%B0%D0%B1%D0%BE%D0%BA%D0%B0%20%D0%A1%D1%8A%D1%80%D0%BD%D0%B8%D1%86%D0%B0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Ресторант Жабока<svg class="nc-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a class="near-card" href="https://www.google.com/maps/search/?api=1&query=%D0%9C%D0%B8%D0%BD%D0%B8%20%D0%9C%D0%B0%D1%80%D0%BA%D0%B5%D1%82%20%D0%A0%D0%BE%D0%BC%D0%B0%D0%BD%D1%82%D0%B8%D0%BA%D0%B0%20%D0%A1%D1%8A%D1%80%D0%BD%D0%B8%D1%86%D0%B0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Магазин Мини Маркет Романтика<svg class="nc-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      <a class="near-card" href="https://www.google.com/maps/search/?api=1&query=Royal%20Sweet%20House%20%D0%A1%D1%8A%D1%80%D0%BD%D0%B8%D1%86%D0%B0" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Сладкарница Royal Sweet House<svg class="nc-go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
     </div>
   </div>
 </section>
@@ -1055,6 +1090,54 @@ footer{background:#120F0A;border-top:1px solid var(--line);padding:56px 0 30px}
   document.querySelectorAll('.kf-num').forEach(function(el){ kio.observe(el); });
 
   document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+<script>
+(function(){
+  function fallback(t){try{var a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.focus();a.select();document.execCommand('copy');document.body.removeChild(a);}catch(e){}}
+  function done(btn){var o=btn.getAttribute('data-label')||btn.textContent;btn.setAttribute('data-label',o);btn.textContent='Копирано ✓';btn.classList.add('copied');setTimeout(function(){btn.textContent=o;btn.classList.remove('copied');},1700);}
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var t=btn.getAttribute('data-copy');
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){done(btn);},function(){fallback(t);done(btn);});}
+      else{fallback(t);done(btn);}
+    });
+  });
+})();
+</script>
+<script>
+/* Устойчивост за in-app браузъри (FB/Messenger/Viber): гарантира, че
+   съдържанието и числата се показват дори ако IntersectionObserver не сработи. */
+(function(){
+  function revealAll(){
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('.num,.kf-num').forEach(function(el){
+      if(el._cDone) return; el._cDone=true; el._kd=true;
+      var c=el.closest?el.closest('.counter'):null; if(c)c._done=true;
+      var to=el.getAttribute('data-to'); el.textContent=(el.querySelector('span')?'+':'')+(to!==null?to:el.textContent);
+    });
+  }
+  /* 1) ГАРАНТИРАН failsafe — регистриран пръв, нищо не остава скрито/на 0 */
+  setTimeout(revealAll, 3200);
+  window.addEventListener('load', function(){ setTimeout(revealAll, 2500); });
+
+  /* 2) Scroll-базиран резерв (работи и там, където observer-ът не сработва) */
+  function vh(){ return window.innerHeight||document.documentElement.clientHeight; }
+  function inView(el){ var r=el.getBoundingClientRect(); return r.top < vh()*0.95 && r.bottom > 0; }
+  function animNum(el){
+    if(el._cDone) return; el._cDone=true; el._kd=true;
+    var c=el.closest?el.closest('.counter'):null; if(c)c._done=true;
+    var to=parseInt(el.getAttribute('data-to'),10)||0, plus=!!el.querySelector('span'), dur=1200, t0=null;
+    function tick(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1); el.textContent=(plus?'+':'')+Math.round(p*to); if(p<1)requestAnimationFrame(tick); }
+    requestAnimationFrame(tick);
+  }
+  function scan(){
+    document.querySelectorAll('.reveal').forEach(function(el){ if(!el.classList.contains('in') && inView(el)) el.classList.add('in'); });
+    document.querySelectorAll('.num,.kf-num').forEach(function(el){ if(!el._cDone && inView(el)) animNum(el); });
+  }
+  window.addEventListener('scroll', scan, {passive:true});
+  window.addEventListener('resize', scan);
+  try{ scan(); }catch(e){}
 })();
 </script>
 </body>
